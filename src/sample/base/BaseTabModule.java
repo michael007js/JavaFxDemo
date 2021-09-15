@@ -10,8 +10,10 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 import io.reactivex.observers.DisposableObserver;
-import io.reactivex.schedulers.Schedulers;
 import sample.Controller;
+import sample.eventbus.EventBusSingleton;
+import sample.eventbus.OnMessageEventListener;
+import sample.eventbus.EventMessage;
 import sample.utils.MouseKeyboardListenerHelper;
 
 /**
@@ -19,7 +21,7 @@ import sample.utils.MouseKeyboardListenerHelper;
  * @date 2021/9/14 21:50
  * @Description 模块基类
  */
-public abstract class BaseTabModule implements NativeMouseListener, NativeKeyListener {
+public abstract class BaseTabModule implements OnMessageEventListener,NativeMouseListener, NativeKeyListener {
     private MouseKeyboardListenerHelper mouseKeyboardListenerHelper = new MouseKeyboardListenerHelper();
     /**
      * 计时器
@@ -32,13 +34,20 @@ public abstract class BaseTabModule implements NativeMouseListener, NativeKeyLis
 
     public BaseTabModule(Controller controller) {
         this.controller = controller;
+        EventBusSingleton.getEventBus().register(this);
         onInitialize();
+    }
+
+    @Override
+    public void onMessageEvent(EventMessage event) {
+
     }
 
     /**
      * 释放资源
      */
     public void releaseAll() {
+        EventBusSingleton.getEventBus().unregister(this);
         unRegisterTimer();
         mouseKeyboardListenerHelper.unRegister();
     }

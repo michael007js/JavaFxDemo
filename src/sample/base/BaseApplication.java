@@ -17,6 +17,9 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.Controller;
 import sample.constant.AppConstant;
+import sample.eventbus.EventBusSingleton;
+import sample.eventbus.EventMessage;
+import sample.eventbus.OnMessageEventListener;
 import sample.utils.AlertUtils;
 import sample.utils.LogUtils;
 
@@ -27,7 +30,7 @@ import sample.utils.LogUtils;
  * @date 2021/9/15 19:44
  * @Description 请完善本类的说明
  */
-public abstract class BaseApplication extends Application {
+public abstract class BaseApplication extends Application implements OnMessageEventListener {
     /**
      * 主控
      */
@@ -53,6 +56,7 @@ public abstract class BaseApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+            EventBusSingleton.getEventBus().register(this);
             onStart(primaryStage);
             primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
@@ -84,7 +88,17 @@ public abstract class BaseApplication extends Application {
      * 窗口被关闭前调用
      */
     protected void onDestroy() {
+        EventBusSingleton.getEventBus().unregister(this);
         System.exit(0);
+    }
+
+    /**
+     *
+     * @param event 消息
+     */
+    @Override
+    public void onMessageEvent(EventMessage event) {
+
     }
 
     /**

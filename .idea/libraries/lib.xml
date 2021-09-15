@@ -38,10 +38,14 @@
       <root url="jar://$PROJECT_DIR$/lib/jna-platform-5.6.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jnativehook-2.1.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/netty-all-4.1.6.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guava-14.0.1.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/guava-14.0.1-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.ideaLibSources/hutool-all-5.6.5-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guava-14.0.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
