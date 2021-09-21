@@ -93,7 +93,7 @@ public abstract class BaseApplication extends Application implements OnMessageEv
     }
 
     /**
-     *
+     * 如果发送了EventMessage消息，会进入到该函数的处理
      * @param event 消息
      */
     @Override

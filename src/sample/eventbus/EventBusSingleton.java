@@ -1,5 +1,7 @@
 package sample.eventbus;
 
+import com.google.common.eventbus.EventBus;
+
 /**
  * @author Michael by SSS
  * @date 2021/9/15 22:54
@@ -9,9 +11,9 @@ public class EventBusSingleton {
     /**
      * 事件总线
      */
-    private static com.google.common.eventbus.EventBus eventBus = new com.google.common.eventbus.EventBus();
+    private static EventBus eventBus = new EventBus();
 
-    public static com.google.common.eventbus.EventBus getEventBus() {
+    public static EventBus getEventBus() {
         return eventBus;
     }
 }

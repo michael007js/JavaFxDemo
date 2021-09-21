@@ -38,6 +38,10 @@ public abstract class BaseTabModule implements OnMessageEventListener,NativeMous
         onInitialize();
     }
 
+    /**
+     * 如果发送了EventMessage消息，会进入到该函数的处理
+     * @param event 消息
+     */
     @Override
     public void onMessageEvent(EventMessage event) {
 

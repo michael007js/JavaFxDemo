@@ -10,6 +10,10 @@ public class EventMessage {
     private int action;
     private Object object;
 
+    public EventMessage(int action) {
+        this.action = action;
+    }
+
     public EventMessage(int action, Object object) {
         this.action = action;
         this.object = object;
