@@ -2,8 +2,7 @@ package sample.base;
 
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
-import org.jnativehook.mouse.NativeMouseEvent;
-import org.jnativehook.mouse.NativeMouseListener;
+import org.jnativehook.mouse.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,7 +20,7 @@ import sample.utils.MouseKeyboardListenerHelper;
  * @date 2021/9/14 21:50
  * @Description 模块基类
  */
-public abstract class BaseTabModule implements OnMessageEventListener,NativeMouseListener, NativeKeyListener {
+public abstract class BaseTabModule implements OnMessageEventListener, NativeMouseListener, NativeMouseMotionListener, NativeMouseWheelListener, NativeKeyListener {
     private MouseKeyboardListenerHelper mouseKeyboardListenerHelper = new MouseKeyboardListenerHelper();
     /**
      * 计时器
@@ -144,6 +143,8 @@ public abstract class BaseTabModule implements OnMessageEventListener,NativeMous
     protected void registerKeyboardAndMouseListen(boolean exitByEsc, boolean keyboard, boolean mouse) {
         if (mouse) {
             mouseKeyboardListenerHelper.setNativeMouseListener(this);
+            mouseKeyboardListenerHelper.setNativeMouseWheelListener(this);
+            mouseKeyboardListenerHelper.setNativeMouseMotionListener(this);
         }
         if (keyboard) {
             mouseKeyboardListenerHelper.setNativeKeyListener(this);
@@ -180,6 +181,36 @@ public abstract class BaseTabModule implements OnMessageEventListener,NativeMous
      */
     @Override
     public void nativeMouseReleased(NativeMouseEvent nativeMouseEvent) {
+
+    }
+
+    /**
+     * 鼠标滚轮滑动
+     *
+     * @param nativeMouseWheelEvent 滚轮事件
+     */
+    @Override
+    public void nativeMouseWheelMoved(NativeMouseWheelEvent nativeMouseWheelEvent) {
+
+    }
+
+    /**
+     * 鼠标移动
+     *
+     * @param nativeEvent 鼠标移动事件
+     */
+    @Override
+    public void nativeMouseMoved(NativeMouseEvent nativeEvent) {
+
+    }
+
+    /**
+     * 鼠标拖动
+     *
+     * @param nativeEvent 鼠标拖动事件
+     */
+    @Override
+    public void nativeMouseDragged(NativeMouseEvent nativeEvent) {
 
     }
 

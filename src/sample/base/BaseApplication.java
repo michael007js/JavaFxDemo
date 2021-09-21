@@ -183,6 +183,7 @@ public abstract class BaseApplication extends Application implements OnMessageEv
             if (SystemTray.isSupported()) {
                 //stage.hide()与stage.close()等价
                 stage.hide();
+                onWindowHide(stage);
             }
         });
     }
@@ -202,10 +203,24 @@ public abstract class BaseApplication extends Application implements OnMessageEv
                     stage.show();
                 }
                 stage.toFront();
+                onWindowShow(stage);
             }
         });
     }
 
+    /**
+     * 窗口被隱藏时调用
+     */
+    public void onWindowHide(Stage stage) {
+
+    }
+
+    /**
+     * 窗口被显示时调用
+     */
+    public void onWindowShow(Stage stage) {
+
+    }
 
     /**
      * 清理垃圾
